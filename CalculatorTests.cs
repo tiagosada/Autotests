@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Autotests
 {
-    public class UnitTest1
+    public class CalculatorTests
     {
          [Fact]
         public void should_return_4_when_passed_2_and_2()
