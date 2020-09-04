@@ -82,5 +82,22 @@ namespace Autotests
             percent= (percent / 5)*100;
             return percent;
         }
+        public string Exercise6( (string name, int votes)[] candidates)
+        {
+            if (candidates[0].votes == candidates[1].votes)
+            {
+                return "segundo turno";
+            }
+            else
+            {
+                var winner = (candidates[0].votes > candidates[1].votes) ? candidates[0] : candidates[1];
+                return winner.name;
+            }
+        }
+        public double Exercise7(double cigarretesPerday, double usingYears, double CPackPrice)
+        {
+            var result =cigarretesPerday*usingYears*365/20*CPackPrice;
+            return result;
+        }
     }
 }

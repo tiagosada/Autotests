@@ -80,7 +80,7 @@ namespace Autotests
                 Assert.Equal(expectedOutput[i], returnedValues[i]);
             }
         }
-                [Fact]
+        [Fact]
         public void should_return_a_sum_of_an_int_from_1_to_100_()
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 2,
@@ -120,7 +120,7 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
-                [Fact]
+        [Fact]
         public void should_return_40_when_passed_14_18_33_36_41()
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 5,
@@ -142,6 +142,7 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
+        [Fact]
         public void should_return_0_when_passed_0()
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 5,
@@ -157,6 +158,70 @@ namespace Autotests
 
             // Deve / Asserções
             var expectedOutput =  0;
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_nelson_when_passed_candidates_nelson_3_luana_1()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 6,
+         // então a aplicação deverá retornar o candidato com mais votos .
+
+
+            // Dado / Setup
+            var candidates = new (string name, int votes)[2]
+            {
+                ("nelson", 3),("luana",1)
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise6(candidates);
+
+            // Deve / Asserções
+            var expectedOutput =  "nelson";
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_segundo_turno_when_passed_candidates_lilia_5_martha_5()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 6,
+         // então a aplicação deverá retornar o candidato com mais votos em caso de empate :"segundo turno" .
+
+            // Dado / Setup
+            var candidates = new (string name, int votes)[2]
+            {
+                ("lilia", 4),("martha",4)
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise6(candidates);
+
+            // Deve / Asserções
+            var expectedOutput =  "segundo turno";
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_6022_5_when_passed_6_and_10_and_5_5()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 7,
+         // então a aplicação deverá retornar o restultado do gasto com cigarros durante o tempo de uso.
+
+
+            // Dado / Setup
+            var usingYears = 6.0;
+            var cigarretesPerday = 10.0;
+            var CPackPrice = 5.5;
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            double returnedValue = exercises.Exercise7( cigarretesPerday, usingYears, CPackPrice);
+
+            // Deve / Asserções
+            var expectedOutput =  6022.5;
 
             Assert.Equal(expectedOutput, returnedValue);
         }
