@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Autotests
 {
@@ -57,14 +58,14 @@ namespace Autotests
         }
         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
         // então a aplicação deverá retornar a méida de idade dos alunos na sala.
-        public double Exercise4( int[] users)
+        public double Exercise4( List<int> users)
         {
             var sum = 0.0 ;
-            for (int i = 0; i < 5; i++)
+            foreach (var item in users)
             {
-                sum += users[i];
+                sum += item;
             }
-            sum = sum/5;
+            sum = sum/users.Count;
             return sum;
         }
         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 5,
@@ -96,8 +97,56 @@ namespace Autotests
         }
         public double Exercise7(double cigarretesPerday, double usingYears, double CPackPrice)
         {
+            if (cigarretesPerday == 0 || usingYears == 0 || CPackPrice == 0)
+            {
+                return 0;
+            }
             var result =cigarretesPerday*usingYears*365/20*CPackPrice;
             return result;
+        }
+        public (double,double) Exercise12(List<double> users)
+        {
+            (double odd, double even) sum = (0,0);
+            foreach (var item in users)
+            {
+                if (item%2 == 0)
+			    {
+				    sum.even += item;
+			    }
+			    else if (item%2 != 0)
+			    {
+			    	sum.odd += item;
+                }
+            }
+            return sum;
+        }
+        public double Exercise13(List<double> users)
+        {
+            var higher = double.MinValue;
+            foreach (var item in users)
+            {
+                if (item > higher)
+                {
+                    higher = item;
+                }
+            }
+            return higher;
+        }
+        public List<int> Exercise14(List<int> users)
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                for (int j = 0; j < users.Count-1; j++)
+                {
+                    if (users[j] > users[j+1])
+                    {
+                        var temp = users[j+1]; 
+                        users[j+1] = users[j];
+                        users[j] = temp;
+                    }
+                }
+            }
+            return users;
         }
     }
 }

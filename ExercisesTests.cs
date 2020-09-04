@@ -1,4 +1,5 @@
 using Xunit;
+using System.Collections.Generic;
 
 namespace Autotests
 {
@@ -106,7 +107,7 @@ namespace Autotests
 
 
             // Dado / Setup
-            var users = new int[5]
+            var users = new List<int>()
             {
                 18,22,33,36,41
             };
@@ -117,6 +118,28 @@ namespace Autotests
 
             // Deve / Asserções
             var expectedOutput =  30;
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+         [Fact]
+        public void should_return_20_when_passed_18_22()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
+         // então a aplicação deverá retornar a méida de idade dos alunos na sala.
+
+
+            // Dado / Setup
+            var users = new List<int>()
+            {
+                18,22
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            double returnedValue = exercises.Exercise4(users);
+
+            // Deve / Asserções
+            var expectedOutput =  20;
 
             Assert.Equal(expectedOutput, returnedValue);
         }
@@ -225,5 +248,159 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
+        [Fact]
+        public void should_return_0_when_passed_0_and_6_and_3()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 7,
+         // então a aplicação deverá retornar o restultado do gasto com cigarros durante o tempo de uso.
+
+
+            // Dado / Setup
+            var usingYears = 0.0;
+            var cigarretesPerday = 6.0;
+            var CPackPrice = 3.0;
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            double returnedValue = exercises.Exercise7( cigarretesPerday, usingYears, CPackPrice);
+
+            // Deve / Asserções
+            var expectedOutput =  0;
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_135_and_166_when_passed_3_33_66_99_100()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 12,
+         // então a aplicação deverá retornar a soma dos numeros impares e a soma dos que forem pares.
+
+            // Dado / Setup
+            var users = new List<double>()
+            {
+                3,33,66,99,100
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise12(users);
+
+            // Deve / Asserções
+             var expectedOutput = (135,166);
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_31_and_80_when_passed_24_56_0_31()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 12,
+         // então a aplicação deverá retornar a soma dos numeros impares e a soma dos que forem pares.
+
+            // Dado / Setup
+            var users = new List<double>()
+            {
+                24,56,0,31
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise12(users);
+
+            // Deve / Asserções
+             var expectedOutput = (31,80);
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_100_when_passed_3_33_66_99_100()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 13,
+         // então a aplicação deverá retornar a o maior valore da lista.
+
+            // Dado / Setup
+            var users = new List<double>()
+            {
+                3,33,66,99,100
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise13(users);
+
+            // Deve / Asserções
+             var expectedOutput = 100;
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_30_when_passed_20_1_4_23_30_15()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 13,
+         // então a aplicação deverá retornar a o maior valore da lista.
+
+            // Dado / Setup
+            var users = new List<double>()
+            {
+                20,1,4,23,30,15
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise13(users);
+
+            // Deve / Asserções
+             var expectedOutput = 30;
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_ordered_when_passed_3_7_2_4()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 14,
+         // então a aplicação deverá retornar a os valores do array em ordem crescente.
+
+            // Dado / Setup
+            var users = new List<int>()
+            {
+                3,7,2,4,
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            List<int> returnedValue = exercises.Exercise14(users);
+
+            // Deve / Asserções
+             var expectedOutput = new List<int>()
+            {
+                2,3,4,7
+            };
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+        [Fact]
+        public void should_return_ordered_when_passed_2_5_8_1_4_6_3_7()
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 14,
+         // então a aplicação deverá retornar a os valores do array em ordem crescente.
+
+            // Dado / Setup
+            var users = new List<int>()
+            {
+                2,5,8,1,4,6,3,7
+            };
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            List<int> returnedValue = exercises.Exercise14(users);
+
+            // Deve / Asserções
+             var expectedOutput = new List<int>()
+            {
+                1,2,3,4,5,6,7,8
+            };
+
+            Assert.Equal(expectedOutput, returnedValue);
+        }
+
     }
 }
