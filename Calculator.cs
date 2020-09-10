@@ -11,6 +11,10 @@ namespace Autotests
 
         public double Divide(double firstNumber, double secondNumber)
         {
+            if (secondNumber == 0)
+            {
+                return 0.0;
+            }
             var result = firstNumber / secondNumber;
 
             return result;

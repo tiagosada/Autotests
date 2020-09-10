@@ -5,70 +5,34 @@ namespace Autotests
 {
     public class CalculatorTests
     {
-         [Fact]
-        public void should_return_4_when_passed_2_and_2()
+        [Theory]
+        [InlineData(2,2,4)]
+        [InlineData(-10,5,-5)]
+        [InlineData(1.5,-2,-0.5)]
+        [InlineData(-54.5,-2.5,-57)]
+        public void should_return_the(double firstNumber, double secondNumber, double expected)
         {
-            var firstNumber = 2;
-            var secondNumber = 2;
             var calculator = new Calculator();
 
             var result = calculator.Sum(firstNumber, secondNumber);
 
-            var expectedOutput = 4;
-            Assert.Equal(expectedOutput, result);
+            Assert.Equal(expected, result);
         }
-
-        [Fact]
-        public void should_return_0_when_passed_0_and_0()
+        [Theory]
+        [InlineData(8,4,2)]
+        [InlineData(0,6,0)]
+        [InlineData(1,0,0)]
+        [InlineData(1,0.5,2)]
+        [InlineData(-10,5,-2)]
+        [InlineData(8,-4,-2)]
+        [InlineData(5.5,2,2.75)]
+        [InlineData(55,9,6.111111111111111)]
+        public void should_return_the_division_betwen_parameters(double firstNumber, double secondNumber, double expected)
         {
-            var firstNumber = 0;
-            var secondNumber = 0;
-            var calculator = new Calculator();
-
-            var result = calculator.Sum(firstNumber, secondNumber);
-
-            var expectedOutput = 0;
-            Assert.Equal(expectedOutput, result);
-        }
-
-        [Fact]
-        public void should_return_8_dot_5_when_passed_8_and_0_dot_5()
-        {
-            var firstNumber = 0;
-            var secondNumber = 0;
-            var calculator = new Calculator();
-
-            var result = calculator.Sum(firstNumber, secondNumber);
-
-            var expectedOutput = 0;
-            Assert.Equal(expectedOutput, result);
-        }
-        
-        [Fact]
-        public void should_return_2_when_passed_8_and_4()
-        {
-            var firstNumber = 8;
-            var secondNumber = 4;
             var calculator = new Calculator();
 
             var result = calculator.Divide(firstNumber, secondNumber);
-
-            var expectedOutput = 2;
-            Assert.Equal(expectedOutput, result);
-        }
-        
-        [Fact]
-        public void should_return_0_when_passed_0_as_first_parameter()
-        {
-            var firstNumber = 0;
-            var secondNumber = 6;
-            var calculator = new Calculator();
-
-            var result = calculator.Divide(firstNumber, secondNumber);
-
-            var expectedOutput = 0;
-
-            Assert.Equal(expectedOutput, result);
+            Assert.Equal(expected, result);
         }
     }
 }
