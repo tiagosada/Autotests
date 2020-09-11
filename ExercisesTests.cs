@@ -1,5 +1,6 @@
 using Xunit;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Autotests
 {
@@ -81,6 +82,7 @@ namespace Autotests
                 Assert.Equal(expectedOutput[i], returnedValues[i]);
             }
         }
+        
         [Fact]
         public void should_return_a_sum_of_an_int_from_1_to_100_()
         {
@@ -99,50 +101,23 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
-        [Fact]
-        public void should_return_30_when_passed_18_22_33_36_41()
+
+        [Theory]
+        [InlineData(new int[2]{18,22}, 20)]
+        [InlineData(new int[5]{18,22,33,36,41},30)]
+        public void should_return_average_of_the_parameters(int[] users, double expected)
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
          // então a aplicação deverá retornar a méida de idade dos alunos na sala.
-
-
-            // Dado / Setup
-            var users = new List<int>()
-            {
-                18,22,33,36,41
-            };
             var exercises = new Exercises();
-
             // Quando / Ação
-            double returnedValue = exercises.Exercise4(users);
+            double returnedValue = exercises.Exercise4(users.ToList());
 
             // Deve / Asserções
-            var expectedOutput =  30;
 
-            Assert.Equal(expectedOutput, returnedValue);
+            Assert.Equal(expected, returnedValue);
         }
-         [Fact]
-        public void should_return_20_when_passed_18_22()
-        {
-         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
-         // então a aplicação deverá retornar a méida de idade dos alunos na sala.
 
-
-            // Dado / Setup
-            var users = new List<int>()
-            {
-                18,22
-            };
-            var exercises = new Exercises();
-
-            // Quando / Ação
-            double returnedValue = exercises.Exercise4(users);
-
-            // Deve / Asserções
-            var expectedOutput =  20;
-
-            Assert.Equal(expectedOutput, returnedValue);
-        }
         [Fact]
         public void should_return_40_when_passed_14_18_33_36_41()
         {
@@ -165,6 +140,7 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
+
         [Fact]
         public void should_return_0_when_passed_0()
         {
