@@ -111,7 +111,7 @@ namespace Autotests
          // então a aplicação deverá retornar a méida de idade dos alunos na sala.
             var exercises = new Exercises();
             // Quando / Ação
-            double returnedValue = exercises.Exercise4(users.ToList());
+            var returnedValue = exercises.Exercise4(users.ToList());
 
             // Deve / Asserções
 
