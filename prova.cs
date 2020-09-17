@@ -26,12 +26,7 @@ namespace Autotests
             var word = "";
             foreach (var item in letters)
             {
-                
-                if (item == "finalizar")
-                {
-                    break;
-                }
-                else
+                if (item != "" && item != " ")
                 {
                     word += item;
                 }

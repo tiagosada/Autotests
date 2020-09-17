@@ -25,11 +25,13 @@ namespace Autotests
             Assert.Equal(expected, result);
         }
         [Theory]
-        [InlineData(new string[5]{"h","u","l","k","finalizar"},"hulk")]
-        [InlineData(new string[7]{"h","u","l","k","finalizar","l","k"},"hulk")]
-        [InlineData(new string[7]{"h","u","l","k","l","k","finalizar"},"hulklk")]
+        [InlineData(new string[4]{"h","u","l","k"},"hulk")]
+        [InlineData(new string[5]{"h","u","-","l","k"},"hu-lk")]
+        [InlineData(new string[6]{"h"," ","u","","l","k"},"hulk")]
         public void Question2(string[] letters , string expected)
         {
+            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 2,
+            // então a aplicação deverá retornar um string contendo as letras passadas pelo usuario.
             var question = new prova();
             
             var result = question.Question2(letters);
