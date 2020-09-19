@@ -287,96 +287,126 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
-        [Fact]
-        public void should_return_100_when_passed_3_33_66_99_100()
+
+        [Theory]
+        [InlineData(new double[6]{20,1,4,23,30,15},30)]
+        [InlineData(new double[5]{3,33,66,99,100},100)]
+        
+        public void should_return_the_max_number_when_passed_a_collection(double[] elements, int expected)
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 13,
          // então a aplicação deverá retornar a o maior valore da lista.
 
             // Dado / Setup
-            var users = new List<double>()
-            {
-                3,33,66,99,100
-            };
+            
+            // list.Add(elements[elements.Length]);
+
             var exercises = new Exercises();
 
             // Quando / Ação
-            var returnedValue = exercises.Exercise13(users);
+            var returnedValue = exercises.Exercise13(elements.ToList());
 
             // Deve / Asserções
-             var expectedOutput = 100;
 
-            Assert.Equal(expectedOutput, returnedValue);
+            Assert.Equal(expected, returnedValue);
         }
-        [Fact]
-        public void should_return_30_when_passed_20_1_4_23_30_15()
-        {
-         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 13,
-         // então a aplicação deverá retornar a o maior valore da lista.
-
-            // Dado / Setup
-            var users = new List<double>()
-            {
-                20,1,4,23,30,15
-            };
-            var exercises = new Exercises();
-
-            // Quando / Ação
-            var returnedValue = exercises.Exercise13(users);
-
-            // Deve / Asserções
-             var expectedOutput = 30;
-
-            Assert.Equal(expectedOutput, returnedValue);
-        }
-        [Fact]
-        public void should_return_ordered_when_passed_3_7_2_4()
+        [Theory]
+        [InlineData(new double[8]{2,5,8,1,4,6,3,7}, new double[8]{1,2,3,4,5,6,7,8})]
+        [InlineData(new double[4]{3,7,2,4}, new double[4]{2,3,4,7})]
+        public void should_return_ordered_when_passed_disordered(double[] users, double[] expected)
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 14,
          // então a aplicação deverá retornar a os valores do array em ordem crescente.
 
             // Dado / Setup
-            var users = new List<int>()
-            {
-                3,7,2,4,
-            };
             var exercises = new Exercises();
 
             // Quando / Ação
-            List<int> returnedValue = exercises.Exercise14(users);
+            var returnedValue = exercises.Exercise14(users.ToList());
 
             // Deve / Asserções
-             var expectedOutput = new List<int>()
-            {
-                2,3,4,7
-            };
 
-            Assert.Equal(expectedOutput, returnedValue);
+            Assert.Equal(expected, returnedValue);
         }
-        [Fact]
-        public void should_return_ordered_when_passed_2_5_8_1_4_6_3_7()
+        [Theory]
+        [InlineData(new double[10]{1,2,3,4,5,6,7,8,9,10},3,2)]
+        public void should_return_how_much_numbers_are_multiple_of_3_and_5(double[] conjunto, int expectedA, int expectedB)
         {
-         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 14,
-         // então a aplicação deverá retornar a os valores do array em ordem crescente.
+            // Imprimir quantos números de um conjunto com 10 são multiplos de 3 quantos de 5.
+            // DADO que a aplicação esteja pronta, QUANDO o usuário informar um número
+            // DEVE retornar quantos são multiplos de 3 quantos de 5.
+
+             // Dado / Setup
+            var exercises = new Exercises();
+            
+            // Quando / Ação
+            var result = exercises.Exercise15(conjunto);
+
+
+            // Deve / Asserções
+            (int a, int b) expected = (expectedA, expectedB);
+            Assert.Equal(result, expected);
+        }
+        [Theory]
+        [InlineData(600.00,600)]
+        [InlineData(1000,800)]
+        [InlineData(1500.00,1125)]
+        [InlineData(2500,1750)]
+        public void should_return_salarioLiquid_when_passed_salario_(double salario, double expected)
+        {
+            // Imprimir o Salário Líquido de acordo com aredução do imposto.
+            // DADO que a aplicação esteja pronta, QUANDO o usuário informar um número
+            // DEVE retornar a tabuada de 1 a 10
+
+             // Dado / Setup
+            var exercises = new Exercises();
+            
+            // Quando / Ação
+            var result = exercises.Exercise16(salario);
+
+
+            // Deve / Asserções
+            Assert.Equal(result, expected);
+        }
+
+        [Theory]
+        [InlineData(6, new int[10]{6, 12, 18, 24, 30, 36, 42, 48, 54, 60})]
+        [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]
+        public void should_return_the_input_multiplied_by_1_to_10(int number, int[] expectedResult)
+        {
+            // Imprimir a tabuada de qualquer número fornecido pelo usuário.
+            // DADO que a aplicação esteja pronta, QUANDO o usuário informar um número
+            // DEVE retornar a tabuada de 1 a 10
 
             // Dado / Setup
-            var users = new List<int>()
-            {
-                2,5,8,1,4,6,3,7
-            };
             var exercises = new Exercises();
-
+            
             // Quando / Ação
-            List<int> returnedValue = exercises.Exercise14(users);
+            var result = exercises.Exercise17(number);
+
 
             // Deve / Asserções
-             var expectedOutput = new List<int>()
-            {
-                1,2,3,4,5,6,7,8
-            };
-
-            Assert.Equal(expectedOutput, returnedValue);
+            Assert.Equal(result, expectedResult);
         }
+        [Theory]
+        [InlineData(8,10.4)]
+        [InlineData(15,15)]
+        [InlineData(-15,0)]
+        [InlineData(0,0)]
+        public void should_return_totalPrice_when_passed_quantity(double quantity, double expected)
+        {
+            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 18,
+            // então a aplicação deverá retornar o preço total da compra (Q*1,30 if Q>12{ Q*1,00}).
+            
+            // Dado / Setup
+            var exercises = new Exercises();
+            
+            // Quando / Ação
+            var result = exercises.Exercise18(quantity);
 
+
+            // Deve / Asserções
+            Assert.Equal(result, expected);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Autotests
 {
@@ -120,19 +121,19 @@ namespace Autotests
             }
             return sum;
         }
-        public double Exercise13(List<double> users)
+        public double Exercise13(List<double> elements)
         {
-            var higher = double.MinValue;
-            foreach (var item in users)
-            {
-                if (item > higher)
-                {
-                    higher = item;
-                }
-            }
-            return higher;
+            // var higher = double.MinValue;
+            // foreach (var item in list)
+            // {
+            //     if (item > higher)
+            //     {
+            //         higher = item;
+            //     }
+            // }
+            return elements.Max();
         }
-        public List<int> Exercise14(List<int> users)
+        public List<double> Exercise14(List<double> users)
         {
             for (int i = 0; i < users.Count; i++)
             {
@@ -147,6 +148,65 @@ namespace Autotests
                 }
             }
             return users;
+        }
+        public (int a, int b) Exercise15(double[] conjunto)
+        {
+            var a = 0;
+            var b = 0;
+            foreach (var item in conjunto)
+            {
+                if (item % 3 == 0)
+                {
+                    a++;
+                }
+                else if (item % 5 == 0)
+                {
+                    b++;
+                }
+            }
+            (int a, int b)quantity =(a,b);
+            return quantity;
+        }
+        public double Exercise16(double salario)
+        {
+            if(salario<= 600.00)
+			{
+				return salario;
+			}
+			else if(salario<= 1200.00)
+			{
+				return salario * 0.8;
+			}
+			else if(salario<= 2000.00)
+			{
+				return salario * 0.75;
+			}
+			else
+			{
+				return salario * 0.7;
+			} 
+        }
+         public IEnumerable<int> Exercise17(int number)
+		{
+            // Imprimir a tabuada de qualquer número fornecido pelo usuário.
+            // DADO que a aplicação esteja pronta, QUANDO o usuário informar um número
+            // DEVE retornar a tabuada de 1 a 10
+
+            var multiplicationTable = new List<int>(){
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
+
+            // função que varre a coleção criando uma outra coleção com o valor retornado da multiplicação (neste caso).
+            return multiplicationTable.Select(item => item * number);
+		}
+        public double Exercise18(double quantity)
+        {
+            if (quantity < 0)
+            {
+                return 0;
+            }
+            var totalPrive = quantity < 12 ? quantity*1.3 : quantity ;
+            return totalPrive;
         }
     }
 }
