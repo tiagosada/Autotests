@@ -57,6 +57,20 @@ namespace Autotests
             }
             return sum;
         }
+        // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 3,
+        // então a aplicação deverá Imprimir todo os números ímpares menores de 200.
+        public int[] Exercise3()
+        {
+            var x =0;
+            var ars = new int[100];
+            for(int i = 1; i < 200; i+=2)
+            {
+                
+                ars[x] = i; 
+                x++;
+            }
+            return ars;
+        }
         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
         // então a aplicação deverá retornar a méida de idade dos alunos na sala.
         public double Exercise4( List<int> users)
