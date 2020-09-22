@@ -10,12 +10,13 @@ namespace entra21_tests
         // Sempre em PascalCase
         public List<(Guid id, string name, string cpf,int votes)> Candidates { get; set; }
         
-        public bool CreateCandidates(List<string> candidateNames, string password)
+        
+        public bool CreateCandidates(List<(string name, string cpf)> candidates, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                Candidates = candidateNames.Select(candidateName => {
-                    return (Guid.NewGuid(), candidateName, " " , 0);
+                Candidates = candidates.Select(candidates => {
+                    return (Guid.NewGuid(), candidates.name, candidates.cpf , 0);
                 }).ToList();
 
                 return true;
@@ -27,22 +28,22 @@ namespace entra21_tests
         }
 
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
-        public Guid GetCandidateIdByCPF(string name)
+        public Guid GetCandidateIdByCPF((string name, string cpf) candidate)
         {
-            return Candidates.First(x => x.name == name).id;
+            return Candidates.First(x => x.cpf == candidate.cpf).id;
         }
 
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        public Guid GetCandidateIdByName(string name)
+        public Guid GetCandidateIdByName((string name, string cpf) candidate)
         {
-            return Candidates.First(x => x.name == name).id;
+            return Candidates.First(x => x.name == candidate.name).id;
         }
 
         public void Vote(Guid id)
         {
             Candidates = Candidates.Select(candidate => {
                 return candidate.id == id
-                    ? (candidate.id, candidate.name, " ", candidate.votes + 1)
+                    ? (candidate.id, candidate.name, candidate.cpf, candidate.votes + 1)
                     : candidate;
             }).ToList();
         }
