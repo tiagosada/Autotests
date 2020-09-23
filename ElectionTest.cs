@@ -56,8 +56,8 @@ namespace entra21_tests
             election.CreateCandidates(candidates, "Pa$$w0rd");
             
             // Quando / Ação
-            var candidateJose = election.GetCandidateIdByName(Jose);
-            var candidateAna = election.GetCandidateIdByName(Ana);
+            var candidateJose = election.GetCandidateIdByCPF(Jose.cpf);
+            var candidateAna = election.GetCandidateIdByCPF(Ana.cpf);
 
             // Deve / Asserções
             Assert.NotEqual(candidateAna, candidateJose);
@@ -73,8 +73,8 @@ namespace entra21_tests
             (string name, string cpf) ana = ("Ana", "956,524,471-85");
             var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(fernando);
-            var anaId = election.GetCandidateIdByName(ana);
+            var fernandoId = election.GetCandidateIdByCPF(fernando.cpf);
+            var anaId = election.GetCandidateIdByCPF(ana.cpf);
 
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -98,7 +98,7 @@ namespace entra21_tests
             (string name, string cpf) ana = ("Ana", "956,524,471-85");
             var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var anaId = election.GetCandidateIdByName(ana);
+            var anaId = election.GetCandidateIdByCPF(ana.cpf);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -122,8 +122,8 @@ namespace entra21_tests
             (string name, string cpf) ana = ("Ana", "956,524,471-85");
             var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(fernando);
-            var anaId = election.GetCandidateIdByName(ana);
+            var fernandoId = election.GetCandidateIdByCPF(fernando.cpf);
+            var anaId = election.GetCandidateIdByCPF(ana.cpf);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -147,7 +147,7 @@ namespace entra21_tests
             (string name, string cpf) ana = ("Ana", "956,524,471-85");
             var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var anaId = election.GetCandidateIdByCPF(ana);
+            var anaId = election.GetCandidateIdByCPF(ana.cpf);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election

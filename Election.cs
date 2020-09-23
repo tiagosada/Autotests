@@ -15,8 +15,8 @@ namespace entra21_tests
         {
             if (password == "Pa$$w0rd")
             {
-                Candidates = candidates.Select(candidates => {
-                    return (Guid.NewGuid(), candidates.name, candidates.cpf , 0);
+                Candidates = candidates.Select(candidate => {
+                    return (Guid.NewGuid(), candidate.name, candidate.cpf , 0);
                 }).ToList();
 
                 return true;
@@ -28,15 +28,16 @@ namespace entra21_tests
         }
 
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
-        public Guid GetCandidateIdByCPF((string name, string cpf) candidate)
+        public Guid GetCandidateIdByCPF(string cpf)
         {
-            return Candidates.First(x => x.cpf == candidate.cpf).id;
+            return Candidates.First(x => x.cpf == cpf).id;
         }
 
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        public Guid GetCandidateIdByName((string name, string cpf) candidate)
+        public List<(Guid id, string name, string cpf,int votes)> GetCandidateIdByName(string name)
         {
-            return Candidates.First(x => x.name == candidate.name).id;
+            // return Candidates.First(x => x.name == candidate.name).id;
+            return Candidates.Where(x => x.name == name).ToList();
         }
 
         public void Vote(Guid id)
