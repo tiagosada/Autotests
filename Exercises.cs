@@ -119,6 +119,37 @@ namespace Autotests
             var result =cigarretesPerday*usingYears*365/20*CPackPrice;
             return result;
         }
+        public bool Exercise8(int x, int y)
+        {
+            //8)Ler dois números inteiros, X e Y, e apresentar mensagem informando se o X é múltiplo de Y.
+            var multiple = (x % y ==0);
+            return multiple;
+        }
+        public bool Exercise9(int[] number)
+		{
+            //9)Fazer um algoritmo para ler 03 números reais do teclado e verificar se 
+            //o primeiro é maior que a soma dos outros dois.
+			
+            bool higher = (number[0]>number[1]+number[2]);
+            return higher;
+		}
+        public bool[] Exercise10(int[] number)
+		{
+            //10)Ler 02 números reais do teclado (A e B), verificar e imprimir qual deles é maior,
+		    // ou a mensagem "A = B" caso sejam iguais
+            var bools = new bool[3]{number[0] == number[1],number[0] > number[1],number[0] < number[1]};
+            
+            return bools;
+		
+        }
+        public string Exercise11(double[] number)
+		{
+            //11)Ler 02 números inteiros do teclado. Se o segundo for diferente de zero, 
+            //calcular e imprimir o quociente do primeiro pelo segundo.
+            // Caso contrário, imprimir a mensagem: "DIVISÃO POR ZERO".
+			var quociente = number[1] != 0 ? $"{number[0] / number[1]}" : "DIVISÃO POR ZERO";
+			return quociente;
+		}
         public (double,double) Exercise12(List<double> users)
         {
             (double odd, double even) sum = (0,0);

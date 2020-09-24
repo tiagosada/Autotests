@@ -268,47 +268,100 @@ namespace Autotests
 
             Assert.Equal(expectedOutput, returnedValue);
         }
-        [Fact]
-        public void should_return_135_and_166_when_passed_3_33_66_99_100()
+        [Theory]
+        [InlineData(4,2,true)]
+        [InlineData(6,3,true)]
+        [InlineData(4,5,false)]
+        public void should_return_bool_comparing_if_is_multiple(int x, int y ,bool expected)
         {
-         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 12,
-         // então a aplicação deverá retornar a soma dos numeros impares e a soma dos que forem pares.
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 8,
+         // então a aplicação deverá retornar se os numeros são multiplos ou não.
 
             // Dado / Setup
-            var users = new List<double>()
-            {
-                3,33,66,99,100
-            };
             var exercises = new Exercises();
 
             // Quando / Ação
-            var returnedValue = exercises.Exercise12(users);
+            var returnedValue = exercises.Exercise8(x,y);
 
             // Deve / Asserções
-             var expectedOutput = (135,166);
 
-            Assert.Equal(expectedOutput, returnedValue);
+            Assert.Equal(expected, returnedValue);   
         }
-        [Fact]
-        public void should_return_31_and_80_when_passed_24_56_0_31()
+        [Theory]
+        [InlineData(new int[3]{3,1,1},true)]
+        [InlineData(new int[3]{100,10,10},true)]
+        [InlineData(new int[3]{1,1,1},false)]
+        public void should_return_bool_comparing_if_first_number_is_higher_than_the_sum_of_others(int[] number,bool expected)
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 9,
+         // então a aplicação deverá retornar se o primeiro número é maior que a soma dos outros dois.
+
+            // Dado / Setup
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise9(number);
+
+            // Deve / Asserções
+
+            Assert.Equal(expected, returnedValue);   
+        }
+        [Theory]
+        [InlineData(new int[2]{2,1}, new bool[3]{false, true, false})]
+        [InlineData(new int[2]{1,3}, new bool[3]{false, false, true})]
+        [InlineData(new int[2]{1,1}, new bool[3]{true, false, false})]
+        public void should_return_bool_comparing_each_one_is_higher_lower_equal(int[] number,bool[] expected)
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 10,
+         // então a aplicação deverá retornar se os qual número é maior, menor ou se são iguais.
+
+            // Dado / Setup
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise10(number);
+
+            // Deve / Asserções
+
+            Assert.Equal(expected, returnedValue);   
+        }
+        [Theory]
+        [InlineData(new double[2]{2,1}, "2")]
+        [InlineData(new double[2]{3,3}, "1")]
+        [InlineData(new double[2]{0,3}, "0")]
+        [InlineData(new double[2]{1,0}, "DIVISÃO POR ZERO" )]
+        public void should_return_quociente_or_divisao_por_zero(double[] number,string expected)
+        {
+         // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 11,
+         // então a aplicação deverá retornar o quociente do primeiro número e segundo número ou "divisao por zero".
+
+            // Dado / Setup
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            var returnedValue = exercises.Exercise11(number);
+
+            // Deve / Asserções
+
+            Assert.Equal(expected, returnedValue);   
+        }
+        [Theory]
+        [InlineData(new double[4]{24,56,0,31}, 31, 80)]
+        [InlineData(new double[5]{3,33,66,99,100}, 135, 166)]
+        public void should_return_sum_of_odds_and_sum_of_evens(double[] users, double expected1, double expected2)
         {
          // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 12,
          // então a aplicação deverá retornar a soma dos numeros impares e a soma dos que forem pares.
 
-            // Dado / Setup
-            var users = new List<double>()
-            {
-                24,56,0,31
-            };
+            // Dado / Setup            
             var exercises = new Exercises();
 
             // Quando / Ação
-            var returnedValue = exercises.Exercise12(users);
+            var returnedValue = exercises.Exercise12(users.ToList());
 
             // Deve / Asserções
-             var expectedOutput = (31,80);
-
-            Assert.Equal(expectedOutput, returnedValue);
+            var expected = (expected1, expected2);
+            Assert.Equal(expected, returnedValue);
         }
 
         [Theory]
