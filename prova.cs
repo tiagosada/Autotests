@@ -37,7 +37,7 @@ namespace Autotests
             return word;
         }
 
-        public StringBuilder Question3()
+        public string Question3( (string names, string answers)[] users)
         {
             // 3. Solicite para 5 usuários que informem seus nomes e se são solteiros.
             // Ao final apresente o nome de todos os usuários solteiros.
@@ -45,10 +45,8 @@ namespace Autotests
 
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine("Digite seu nome");
-                var name = Console.ReadLine();
-                Console.WriteLine("Você é solteiro?");
-                var isSingle = Console.ReadLine();
+                var name = users[i].names;
+                var isSingle = users[i].answers;
                 if (isSingle == "sim")
                 {
                     singleMen.Append($"{name}, ");

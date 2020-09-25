@@ -44,7 +44,7 @@ namespace Autotests
         {
             // Dado que a aplicação está preparada. Quando o usuário chamar a Questão 3,
             // então a aplicação deverá retornar o nome de todos os usuários solteiros
-            var users = new (string, string)[5];
+            var users = new (string names, string answers)[5];
             for (int i = 0; i < 5; i++)
             {
                 users[i] = (names[i], answers[i]);
