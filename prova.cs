@@ -7,8 +7,9 @@ namespace Autotests
 	{
         public double Question1(int hours, double minutes, double perHour)
         {
-            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1,
-            // então a aplicação deverá retornar o valor ganho por dia.
+            //. Solicite ao usuário que informe quantas horas e minutos ele trabalha por dia e qual o valor/hora de seu serviço.
+            //Imprima quanto dinheiro ele ganha ao longo de um dia trabalhado. A mensagem impressa ao usuário deve ter, no máximo,
+            // duas casas após a vírgula.
             if (hours <= 0)
             {
                 return 0;
@@ -23,6 +24,8 @@ namespace Autotests
 
         public string Question2(string[] letters)
         {
+            // 2. Solicite ao usuário que informe uma palavra qualquer, porém ele deve digitar uma letra por vez.
+            // Quando o usuário informar a palavra “Finalizar”, a aplicação deve apresentar a palavra inteira.
             var word = "";
             foreach (var item in letters)
             {
@@ -34,8 +37,10 @@ namespace Autotests
             return word;
         }
 
-        static void Question3()
+        public StringBuilder Question3()
         {
+            // 3. Solicite para 5 usuários que informem seus nomes e se são solteiros.
+            // Ao final apresente o nome de todos os usuários solteiros.
             var singleMen = new StringBuilder();
 
             for (int i = 0; i < 5; i++)
@@ -51,7 +56,7 @@ namespace Autotests
             }
 
             singleMen.Remove(singleMen.Length - 2, 2);
-            Console.WriteLine($"Todos os solteiros: {singleMen}");
+            return singleMen.ToString();
         }
 
         static void Question4()
