@@ -34,68 +34,13 @@ namespace Autotests
             
             return Array.Exists(arsA , x => x == val);
         }
-        // static void Exercise4()
-        // //4. Leia dois arrays A e B com 10 elementos.
-        // //  Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.
-        // {
-        //     var arsA = new int?[3];
-        //     var arsB = new int?[3];
-        //     var equals = false; 
-        //     var equal =0 ;
-
-        //     for (int a = 0; a < arsA.Length; a++)
-        //     {
-        //         System.Console.WriteLine("digite um número para A:");
-        //         var inputA = System.Console.ReadLine();
-        //         while (arsA[a] == null)
-        //         {
-        //             try
-        //             {
-        //                 arsA[a] = Int32.Parse(inputA);
-        //             }
-        //             catch (System.Exception)
-        //             {
-        //                 System.Console.WriteLine("O números está em formato inválido");
-        //                 System.Console.WriteLine("digite um número para A:");
-        //                 inputA = System.Console.ReadLine();
-                            
-        //             }
-        //         }
-        //     }
-        //     for (var j =0; j < arsA.Length; j++)
-        //     {
-        //         System.Console.WriteLine("digite um número para B:");
-        //         var inputB = System.Console.ReadLine();
-        //         while (arsB[j] == null)
-        //         {
-        //             try
-        //             {
-        //                 arsB[j] = Int32.Parse(inputB);
-        //             }
-        //             catch (System.Exception)
-        //             {
-        //                 System.Console.WriteLine("O números está em formato inválido");
-        //                 System.Console.WriteLine("digite um número para A:");
-        //                 inputB = System.Console.ReadLine();
-                            
-        //             }
-        //         }
-        //         for (var i =0 ; i < arsB.Length; i++)
-        //         {
-        //             if(arsA[i]==arsB[j])
-        //             {
-        //                 equal ++;
-        //                 arsA[i] = null;
-        //                 break;
-        //             }
-        //         }
-        //         if (equal == arsB.Length)
-        //         {
-        //             equals= true;
-        //         }
-        //     }
-        //    var messenge = equals ? "os arrays são iguais." : "os arrays não são iguais.";
-        // }
+        public bool Exercise4(double[] arsA, double[] arsB)
+        //4. Leia dois arrays A e B com 10 elementos.
+        //  Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.
+        {
+            var iguais = arsA == arsB;
+           return iguais;
+        }
         // static void Exercise5()
         // //5. Leia um array A com 15 elementos,
         // // e calcule a média aritmética dos mesmos, em seguida,
