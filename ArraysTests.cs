@@ -70,6 +70,27 @@ namespace Autotests
             Assert.Equal(expected, result);
 
        }
+       [Theory]
+        [InlineData(new double[3]{1,2,3}, new double[3]{1,2,3}, true)]
+        [InlineData(new double[4]{0,1,2,3}, new double[4]{0,1,3,2}, false)]
+       public void Exercise4(double[] arsA, double[] arsB, bool expected)
+       {
+            //4. Leia dois arrays A e B com 10 elementos.
+            //Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.
+
+            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 4,
+            // então a aplicação deverá retornar um bool ao COMPARAR array A com array B.
+
+            // Dado / Setup
+            var arrays = new Arrays();
+
+            // Quando / Ação
+            var result = arrays.Exercise4(arsA, arsB);
+
+            // Deve / Asserções
+            Assert.Equal(expected, result);
+
+       }
  
    }
 }

@@ -35,10 +35,18 @@ namespace Autotests
             return Array.Exists(arsA , x => x == val);
         }
         public bool Exercise4(double[] arsA, double[] arsB)
-        //4. Leia dois arrays A e B com 10 elementos.
-        //  Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.
         {
-            var iguais = arsA == arsB;
+            //4. Leia dois arrays A e B com 10 elementos.
+            //  Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.
+            bool iguais = true;
+            for (int i = 0; i < arsA.Length; i++)
+            {
+                if (arsA[i] != arsB[i] )
+                {
+                    iguais = false;
+                    break;
+                }
+            }
            return iguais;
         }
         // static void Exercise5()
