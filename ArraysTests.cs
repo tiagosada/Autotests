@@ -91,6 +91,28 @@ namespace Autotests
             Assert.Equal(expected, result);
 
        }
+        [Theory]
+        [InlineData(new int[3]{1,2,3}, 1,1,1)]
+        [InlineData(new int[2]{8,6}, 1,1,0 )]
+       public void Exercise5(int[] arsA, int expectedA,int expectedB,int expectedC)
+       {
+            //5. Leia um array A com 15 elementos,
+            // e calcule a média aritmética dos mesmos, em seguida,
+            // diga quantos dos elementos lidos estão abaixo, acima e na média.
+
+            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 5,
+            // então a aplicação deverá retornar uma tupla contendo elementos a baixo, acima e na média.
+
+            // Dado / Setup
+            var arrays = new Arrays();
+
+            // Quando / Ação
+            var result = arrays.Exercise5(arsA);
+            (int Ov, int Ab, int On) expected =(expectedA, expectedB, expectedC);
+            // Deve / Asserções
+            Assert.Equal(expected, result);
+
+       }
  
    }
 }

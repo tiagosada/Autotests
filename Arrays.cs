@@ -49,50 +49,32 @@ namespace Autotests
             }
            return iguais;
         }
-        // static void Exercise5()
-        // //5. Leia um array A com 15 elementos,
-        // // e calcule a média aritmética dos mesmos, em seguida,
-        // // diga quantos dos elementos lidos estão abaixo, acima e na média.
-        // {
-        //     var arsA = new int[15];
-        //     var mediaV = 0;
-        //     var sumV = 0;
-        //     var Ovmedia = 0;
-        //     var Unmedia = 0;
-        //     var Inmedia = 0;
-        //     System.Console.WriteLine("calculando a média aritimética");
-        //     System.Console.WriteLine("Insira 15 valores:");
-
-        //     for (int a = 0; a < arsA.Length; a++)
-        //    {
-        //         System.Console.WriteLine($"digite o um número:");
-        //         arsA[a] = int.Parse(System.Console.ReadLine());
-        //     }
-        //     for (int x = 0; x < arsA.Length; x++)
-        //     {
-        //         sumV = sumV + arsA[x];
-        //     }
-        //     mediaV = sumV/arsA.Length;
-        //      System.Console.WriteLine($"a média é {mediaV}.");
-        //     for (int y = 0; y < arsA.Length; y++)
-        //     {
-        //         if(arsA[y] < mediaV)
-        //         {
-        //             Unmedia++;
-        //         }
-        //         else if(arsA[y] == mediaV)
-        //         {
-        //             Inmedia++;
-        //         }
-        //         else 
-        //         {
-        //             Ovmedia++;
-        //         }
-        //     }
-        //     System.Console.WriteLine($"existem {Unmedia} valores abaixo da média");
-        //     System.Console.WriteLine($"existem {Inmedia} valores na média");
-        //     System.Console.WriteLine($"existem {Ovmedia} valores acima da média");
-        // }
+        public (int OV, int Ab, int On) Exercise5(int[] arsA)
+        //5. Leia um array A com 15 elementos,
+        // e calcule a média aritmética dos mesmos, em seguida,
+        // diga quantos dos elementos lidos estão abaixo, acima e na média.
+        {
+            (int Ov, int Ab, int On) average = (0,0,0);
+           
+            var media = arsA.Sum() / arsA.Length;
+            
+            for (int i = 0; i < arsA.Length; i++)
+            {
+                if(arsA[i] < media)
+                {
+                    average.Ab++;
+                }
+                else if(arsA[i] == media)
+                {
+                    average.On++;
+                }
+                else 
+                {
+                    average.Ov++;
+                }
+            }
+           return average;
+        }
         
         // static void Exercise6()
         // //6. Leia um array A com 4 elementos. Após sua leitura, colocar os seus elementos em ordem crescente.
