@@ -16,6 +16,9 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.NotNull(candidate);
+            Assert.NotNull(candidate.Cpf);
+            Assert.Equal("Noronha", candidate.Name);
+            Assert.Equal("000,111,222-33", candidate.Cpf);
         }
         [Fact]
         public void CandidateTest2()
@@ -29,6 +32,9 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.NotNull(candidate);
+            Assert.NotNull(candidate.Cpf);
+            Assert.Equal("Noronha", candidate.Name);
+            Assert.Equal("000,111,222-33", candidate.Cpf);
             Assert.Equal(1, candidate.Votes);
         }
 

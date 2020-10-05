@@ -12,7 +12,7 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = new List<string>{"José"};
+            var candidates = new List<(string name, string cpf)>{("José", "111.111.111-57")};
 
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");
@@ -30,7 +30,8 @@ namespace entra21_tests
             // OBJETO election
             var election = new Election();
             string candidate = "José";
-            var candidates = new List<string>{candidate};
+            string cpfCandidate= "111.111.111-11";
+            var candidates = new List<(string name, string cpf)>{(candidate, cpfCandidate)};
 
             // Quando / Ação
 
@@ -52,14 +53,14 @@ namespace entra21_tests
 
             // OBJETO election
             var election = new Election();
-            string Jose = "José";
-            string Ana = "Ana";
-            var candidates = new List<string>{Jose, Ana};
+            (string name, string cpf) Jose = ("José", "222");
+            (string name, string cpf) Ana = ("Ana", "111");
+            var candidates = new List<(string name, string cpf)>{Jose, Ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
             
             // Quando / Ação
-            var candidateJose = election.GetCandidateIdByName(Jose);
-            var candidateAna = election.GetCandidateIdByName(Ana);
+            var candidateJose = election.GetCandidateIdByName(Jose.name);
+            var candidateAna = election.GetCandidateIdByName(Ana.name);
 
             // Deve / Asserções
             Assert.NotEqual(candidateAna, candidateJose);
@@ -71,12 +72,12 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var candidates = new List<string>{fernando, ana};
+            (string name , string cpf) fernando = ("Fernando", "111.222.333-45");
+            (string name, string cpf) ana = ("Ana", "666.777.888.91");
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(fernando);
-            var anaId = election.GetCandidateIdByName(ana);
+            var fernandoId = election.GetCandidateIdByName(fernando.name);
+            var anaId = election.GetCandidateIdByName(ana.name);
 
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -96,11 +97,11 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var candidates = new List<string>{fernando, ana};
+            (string name , string cpf) fernando = ("Fernando", "111.222.333-45");
+            (string name, string cpf) ana = ("Ana", "666.777.888.91");
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var anaId = election.GetCandidateIdByName(ana);
+            var anaId = election.GetCandidateIdByName(ana.name);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -120,12 +121,12 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var candidates = new List<string>{fernando, ana};
+           (string name , string cpf) fernando = ("Fernando", "111.222.333-45");
+            (string name, string cpf) ana = ("Ana", "666.777.888.91");
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName(fernando);
-            var anaId = election.GetCandidateIdByName(ana);
+            var fernandoId = election.GetCandidateIdByName(fernando.name);
+            var anaId = election.GetCandidateIdByName(ana.name);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -138,6 +139,15 @@ namespace entra21_tests
             var candidateAna = winners.Find(x => x.Id == anaId);
             Assert.Equal(1, candidateFernando.Votes);
             Assert.Equal(1, candidateAna.Votes);
+        }
+        private List<Candidate> creatingCandidates()
+        {
+            var candidatesList = new List<Candidate>()
+            { 
+                new Candidate("Maria", "245,875,522-44"), new Candidate("Antonio","854,625,358-75")
+            };
+            
+            return candidatesList;
         }
     }
 }
