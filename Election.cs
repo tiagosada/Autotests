@@ -19,17 +19,15 @@ namespace entra21_tests
         // Propriedade apenas com GET pode ser usada com arrow
         public IReadOnlyCollection<Candidate> Candidates => candidates;
         
-        public bool CreateCandidates(List<(string name, string cpf )> candidateIdentity, string password)
+        public bool CreateCandidates(List<Candidate> newCandidates, string password)
         {
-            if (candidateIdentity == null)
+            if (newCandidates == null)
             {
                 return true;
             }
             if (password == "Pa$$w0rd")
             {
-                candidates = candidateIdentity.Select(x => {
-                    return (new Candidate(x.name, x.cpf));
-                }).ToList();
+                candidates = newCandidates;
 
                 return true;
             }
