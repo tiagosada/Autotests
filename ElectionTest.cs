@@ -12,7 +12,7 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(1);
 
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");
@@ -29,7 +29,7 @@ namespace entra21_tests
 
             // OBJETO election
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(1);
 
             // Quando / Ação
 
@@ -40,8 +40,8 @@ namespace entra21_tests
             Assert.True(created);
 
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
-            Assert.Equal(2, election.Candidates.Count);
-            Assert.Equal("Fernando", election.Candidates.ElementAt(0).Name);
+            Assert.Equal(1, election.Candidates.Count);
+            Assert.Equal("Ana", election.Candidates.ElementAt(0).Name);
         }
 
         [Fact]
@@ -51,15 +51,15 @@ namespace entra21_tests
 
             // OBJETO election
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(2);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             
             // Quando / Ação
-            var candidateJose = election.GetCandidateIdByName("Fernando");
+            var candidateFernando = election.GetCandidateIdByName("Fernando");
             var candidateAna = election.GetCandidateIdByName("Ana");
 
             // Deve / Asserções
-            Assert.NotEqual(candidateAna, candidateJose);
+            Assert.NotEqual(candidateAna, candidateFernando);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(3);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             var fernandoId = election.GetCandidateIdByName("Fernando");
             var anaId = election.GetCandidateIdByName("Ana");
@@ -91,7 +91,7 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(4);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             var anaId = election.GetCandidateIdByName("Ana");
             
@@ -113,7 +113,7 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            var candidates = ListOfCandidates();
+            var candidates = ListOfCandidates(2);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             var fernandoId = election.GetCandidateIdByName("Fernando");
             var anaId = election.GetCandidateIdByName("Ana");
@@ -130,14 +130,25 @@ namespace entra21_tests
             Assert.Equal(1, candidateFernando.Votes);
             Assert.Equal(1, candidateAna.Votes);
         }
-        private List<Candidate> ListOfCandidates()
+        private List<Candidate> ListOfCandidates(int amount)
         {
+            
             var candidatesList = new List<Candidate>()
             { 
-                new Candidate("Fernando", "245,875,522-44"), new Candidate("Ana","854,625,358-75")
+                new Candidate("Ana","854,625,358-75"),
+                new Candidate("Fernando", "245,875,522-44"),
+                new Candidate("João","832,665,789-75"),
+                new Candidate("Maria","762,125,449-89")
             };
-            
-            return candidatesList;
+            if (amount > candidatesList.Count())
+            {
+                amount = candidatesList.Count();
+            }
+            else if (amount < 1)
+            {
+                amount = 1;
+            }
+            return candidatesList.Take(amount).ToList();
         }
     }
 }
