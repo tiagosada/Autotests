@@ -1,6 +1,7 @@
 using Xunit;
+using Domain;
 
-namespace Autotests
+namespace Tests
 {
     public class ArraysTests
     {
@@ -109,6 +110,28 @@ namespace Autotests
             // Quando / Ação
             var result = arrays.Exercise5(arsA);
             (int Ov, int Ab, int On) expected =(expectedA, expectedB, expectedC);
+            // Deve / Asserções
+            Assert.Equal(expected, result);
+
+       }
+        [Theory]
+        [InlineData(new int[3]{3,2,1}, new int[3]{4,5,6}, new int[3]{5,3,1})]
+        [InlineData(new int[2]{8,6}, new int[2]{4,2}, new int[2]{2,4})]
+       public void Exercise6(int[] arsA, int[] arsB, int[] expected)
+       { 
+               //6. Leia um array A com 4 elementos. Após sua leitura, colocar os seus elementos em ordem crescente.
+               //Depois ler um array B também com doze elementos, colocar os elementos de B em ordem decrescente.
+               //Construir um array C, onde cada elemento de C é a soma do elemento correspondente de A com b.
+               //Colocar em ordem crescente a matriz C e apresentar os seus valores.
+
+            // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 5,
+            // então a aplicação deverá retornar um array resultado da soma dos arrays anteriores em ordem opostas.
+
+            // Dado / Setup
+            var arrays = new Arrays();
+
+            // Quando / Ação
+            var result = arrays.Exercise6(arsA, arsB);
             // Deve / Asserções
             Assert.Equal(expected, result);
 

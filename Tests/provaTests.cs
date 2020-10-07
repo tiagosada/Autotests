@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Domain;
 
-namespace Autotests
+namespace Tests
 {
         public class provaTests
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Text;
 
-namespace Autotests
+namespace Domain
 {
-    class prova
+    public class prova
 	{
         public double Question1(int hours, double minutes, double perHour)
         {

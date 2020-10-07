@@ -1,8 +1,9 @@
 using Xunit;
 using System.Collections.Generic;
 using System.Linq;
+using Domain;
 
-namespace Autotests
+namespace Tests
 {
     public class ExercisesTests
     {

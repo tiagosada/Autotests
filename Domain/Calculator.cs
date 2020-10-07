@@ -1,6 +1,6 @@
-namespace Autotests
+namespace Domain
 {
-    class Calculator
+    public class Calculator
     {
         public double Sum(double firstNumber, double secondNumber)
         {

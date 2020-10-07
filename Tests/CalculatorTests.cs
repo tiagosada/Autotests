@@ -1,7 +1,8 @@
 using System;
 using Xunit;
+using Domain;
 
-namespace Autotests
+namespace Tests
 {
     public class CalculatorTests
     {

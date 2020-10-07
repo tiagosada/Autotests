@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Autotests
+namespace Domain
 {
-    class Exercises
+    public class Exercises
     {
         public int[] Exercise1A()
         {

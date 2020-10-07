@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Xunit;
+using Domain;
 
-namespace entra21_tests
+namespace Tests
 {
     public class CandidateTests
     {
