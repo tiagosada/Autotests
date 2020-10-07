@@ -84,20 +84,8 @@ namespace Domain
         {
             var arsC = new int[arsA.Length]; 
             // colocando matrix A em ordem crescente
-            for (int i = 1; i < arsA.Length; i++)
-            {
-                //proteção para não passar do limite do array.(x < arsA.Length - 1;)
-                for (int x = 0; x < arsA.Length - 1; x++)
-                {
-                    if (arsA[x] > arsA[x + 1])
-                    {
-                        var temp = arsA[x+1]; 
-                        arsA[x+1] = arsA[x];
-                        arsA[x] = temp;
-                    }            
-                }
-            }
-            // colocando matrix B em ordem crescente
+            Array.Sort(arsA);
+            // colocando matrix B em ordem decrescente
             for (int i = 1; i < arsB.Length; i++)
             {
 
@@ -116,19 +104,7 @@ namespace Domain
                 arsC[b] = arsA[b] + arsB[b];
             }
             // colocando matrix C em ordem crescente
-            for (int i = 1; i < arsC.Length; i++)
-            {
-                //proteção para não passar do limite do array.(x < arsA.Length - 1;)
-                for (int x = 0; x < arsC.Length - 1; x++)
-                {
-                    if (arsC[x] > arsC[x + 1])
-                    {
-                        var temp = arsC[x+1]; 
-                        arsC[x+1] = arsC[x];
-                        arsC[x] = temp;
-                    }            
-                }
-            }
+           Array.Sort(arsC);
             return arsC;
         }
 

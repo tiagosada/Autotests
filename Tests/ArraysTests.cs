@@ -115,8 +115,9 @@ namespace Tests
 
        }
         [Theory]
-        [InlineData(new int[3]{3,2,1}, new int[3]{4,5,6}, new int[3]{5,3,1})]
-        [InlineData(new int[2]{8,6}, new int[2]{4,2}, new int[2]{2,4})]
+        [InlineData(new int[3]{3,2,1}, new int[3]{4,5,6}, new int[3]{7,7,7})]
+        [InlineData(new int[3]{3,1,2}, new int[3]{5,4,6}, new int[3]{7,7,7})]
+        [InlineData(new int[2]{8,6}, new int[2]{4,2}, new int[2]{10,10})]
        public void Exercise6(int[] arsA, int[] arsB, int[] expected)
        { 
                //6. Leia um array A com 4 elementos. Após sua leitura, colocar os seus elementos em ordem crescente.
