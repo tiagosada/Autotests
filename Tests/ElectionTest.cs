@@ -71,19 +71,37 @@ namespace Tests
             var election = new Election();
             var candidates = ListOfCandidates(3);
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByName("Fernando");
-            var anaId = election.GetCandidateIdByName("Ana");
-
+            var fernandoCPF = candidates[1].CPF;
+            var anaCPF = candidates[0].CPF;
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(fernandoId);
-            election.Vote(fernandoId);
+            election.Vote(fernandoCPF);
+            election.Vote(fernandoCPF);
 
             // Deve / Asserções
-            var candidateFernando = election.Candidates.First(x => x.Id == fernandoId);
-            var candidateAna = election.Candidates.First(x => x.Id == anaId);
+            var candidateFernando = election.Candidates.First(x => x.CPF == fernandoCPF);
+            var candidateAna = election.Candidates.First(x => x.CPF == anaCPF);
             Assert.Equal(2, candidateFernando.Votes);
             Assert.Equal(0, candidateAna.Votes);
+        }
+        [Fact]
+        public void should_return_false_and_not_vote_if_cpf_is_invalid()
+        {
+            // Dado / Setup
+            // OBJETO election
+            var election = new Election();
+            var candidates = ListOfCandidates(1);
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            var anaId = election.GetCandidateIdByName("Ana");
+            // Quando / Ação
+            // Estamos acessando o MÉTODO ShowMenu do OBJETO election
+            var voted = election.Vote("525,114,142-85");
+
+
+            // Deve / Asserções
+            var candidateFernando = election.Candidates.First(x => x.Id == anaId);
+            Assert.Equal(0, candidateFernando.Votes);
+            Assert.False(voted);
         }
 
         [Fact]
@@ -95,11 +113,12 @@ namespace Tests
             var candidates = ListOfCandidates(4);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             var anaId = election.GetCandidateIdByName("Ana");
+            var anaCPF = candidates[0].CPF;
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(anaId);
-            election.Vote(anaId);
+            election.Vote(anaCPF);
+            election.Vote(anaCPF);
             var winners = election.GetWinners();
 
             // Deve / Asserções
@@ -117,12 +136,14 @@ namespace Tests
             var candidates = ListOfCandidates(2);
             election.CreateCandidates(candidates, "Pa$$w0rd");
             var fernandoId = election.GetCandidateIdByName("Fernando");
+            var fernandoCPF = candidates[1].CPF;
             var anaId = election.GetCandidateIdByName("Ana");
+            var anaCPF = candidates[0].CPF;
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(anaId);
-            election.Vote(fernandoId);
+            election.Vote(anaCPF);
+            election.Vote(fernandoCPF);
             var winners = election.GetWinners();
 
             // Deve / Asserções
@@ -136,10 +157,10 @@ namespace Tests
             
             var candidatesList = new List<Candidate>()
             { 
-                new Candidate("Ana","854,625,358-75"),
-                new Candidate("Fernando", "245,875,522-44"),
-                new Candidate("João","832,665,789-75"),
-                new Candidate("Maria","762,125,449-89")
+                new Candidate("Ana","182.518.430-57"),
+                new Candidate("Fernando", "324.622.360-23"),
+                new Candidate("João","754.981.600-03"),
+                new Candidate("Maria","801.210.080-02")
             };
             if (amount > candidatesList.Count())
             {
