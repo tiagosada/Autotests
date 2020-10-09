@@ -86,7 +86,8 @@ namespace Domain
             // colocando matrix A em ordem crescente
             Array.Sort(arsA);
             // colocando matrix B em ordem decrescente
-            Array.Sort(arsB).Reverse(arsB);
+            Array.Sort(arsB);
+            Array.Reverse(arsB);
             for (int b = 0; b < arsB.Length; b++)
             {
                 arsC[b] = arsA[b] + arsB[b];
