@@ -94,7 +94,15 @@ namespace Domain
         }
         public bool ValidateName()
         {
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                return false;
+            }
             
+            if (!Name.All(char.IsLetter))
+            {
+                return false;
+            }
             return true;
         }
     }
