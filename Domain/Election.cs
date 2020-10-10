@@ -45,10 +45,15 @@ namespace Domain
             return candidates.First(x => x.Name == name).Id;
         }
 
-        public void Vote(Guid id)
+        public bool Vote(string cpf)
         {
-            var foundCandidate = candidates.Find(candidate => candidate.Id == id);
+            var foundCandidate = candidates.FirstOrDefault(candidate => candidate.CPF == cpf);
+            if (foundCandidate == null)
+            {
+                return false;
+            }
             foundCandidate.Vote();
+            return true;
         }
 
         public List<Candidate> GetWinners()
