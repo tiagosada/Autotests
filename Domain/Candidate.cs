@@ -103,7 +103,16 @@ namespace Domain
             {
                 return false;
             }
+            if (!Name.All(x => char.IsLetter(x) || char.IsWhiteSpace(x)))
+            {
+                return false;
+            }
+            if (!char.IsUpper(Name[0]))
+            {
+                return false;
+            }
             return true;
+            
         }
     }
 }
